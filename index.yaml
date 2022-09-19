@@ -2,8 +2,8 @@ apiVersion: v1
 entries:
   airbyte:
   - apiVersion: v2
-    appVersion: 0.40.7
-    created: "2022-09-16T18:43:44.246021074Z"
+    appVersion: 0.35.12-alpha
+    created: "2022-01-31T12:14:06.423369-05:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -14,318 +14,135 @@ entries:
       name: postgresql
       repository: https://charts.bitnami.com/bitnami
       version: 10.x.x
-    - condition: global.logs.minio.enabled
+    - condition: minio.enabled
       name: minio
       repository: https://charts.bitnami.com/bitnami
-      version: 11.x.x
-    - condition: airbyte-bootloader.enabled
-      name: airbyte-bootloader
-      repository: https://airbytehq.github.io/helm-charts/
-      version: 0.40.8
-    - condition: temporal.enabled
-      name: temporal
-      repository: https://airbytehq.github.io/helm-charts/
-      version: 0.40.8
-    - condition: webapp.enabled
-      name: webapp
-      repository: https://airbytehq.github.io/helm-charts/
-      version: 0.40.8
-    - condition: server.enabled
-      name: server
-      repository: https://airbytehq.github.io/helm-charts/
-      version: 0.40.8
-    - condition: worker.enabled
-      name: worker
-      repository: https://airbytehq.github.io/helm-charts/
-      version: 0.40.8
-    - condition: pod-sweeper.enabled
-      name: pod-sweeper
-      repository: https://airbytehq.github.io/helm-charts/
-      version: 0.40.8
-    - condition: metrics.enabled
-      name: metrics
-      repository: https://airbytehq.github.io/helm-charts/
-      version: 0.40.8
+      version: 7.x.x
     description: Helm chart to deploy airbyte
-    digest: 7a5c71eccc5555e5bbd3d14ea84650da04850a169a00a6481f0e219838aa685d
+    digest: 16437465373111dcef9e264032fe03301ca55de1b8280cf646cbd8c65cfbd1aa
     name: airbyte
     type: application
     urls:
-    - airbyte-0.40.8.tgz
-    version: 0.40.8
+    - airbyte-0.3.1.tgz
+    version: 0.3.1
   - apiVersion: v2
-    appVersion: 0.40.6
-    created: "2022-09-16T18:43:44.224783535Z"
+    appVersion: 0.35.12-alpha
+    created: "2022-01-31T12:14:06.414595-05:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
       tags:
       - bitnami-common
       version: 1.x.x
-    - condition: airbyte-bootloader.enabled
-      name: airbyte-bootloader
-      repository: https://airbytehq.github.io/helm-charts/
-      version: 0.40.6
-    - condition: temporal.enabled
-      name: temporal
-      repository: https://airbytehq.github.io/helm-charts/
-      version: 0.40.6
-    - condition: webapp.enabled
-      name: webapp
-      repository: https://airbytehq.github.io/helm-charts/
-      version: 0.40.6
-    - condition: server.enabled
-      name: server
-      repository: https://airbytehq.github.io/helm-charts/
-      version: 0.40.6
-    - condition: worker.enabled
-      name: worker
-      repository: https://airbytehq.github.io/helm-charts/
-      version: 0.40.6
-    - condition: pod-sweeper.enabled
-      name: pod-sweeper
-      repository: https://airbytehq.github.io/helm-charts/
-      version: 0.40.6
-    - condition: metrics.enabled
-      name: metrics
-      repository: https://airbytehq.github.io/helm-charts/
-      version: 0.40.6
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 10.x.x
+    - condition: minio.enabled
+      name: minio
+      repository: https://charts.bitnami.com/bitnami
+      version: 7.x.x
     description: Helm chart to deploy airbyte
-    digest: e8078f87e4f81c9c78e46f69e9eca5fda72e1eaa99897760d830218278aaafd9
+    digest: 597a83f5449132e50e49f6c761ce805fae954fabc81ad9a611ad2f92a6f15934
     name: airbyte
     type: application
     urls:
-    - airbyte-0.40.6.tgz
-    version: 0.40.6
-  airbyte-bootloader:
-  - apiVersion: v2
-    appVersion: 0.40.7
-    created: "2022-09-16T18:43:44.2483366Z"
+    - airbyte-0.3.0.tgz
+    version: 0.3.0
+  common:
+  - annotations:
+      category: Infrastructure
+    apiVersion: v2
+    appVersion: 1.10.0
+    created: "2022-01-31T12:14:06.423957-05:00"
+    description: A Library Helm Chart for grouping common logic between bitnami charts.
+      This chart is not deployable by itself.
+    digest: d13f6834adeb4d8d9cf94d2149680b08006543ab88944192f236decebd6313ae
+    home: https://github.com/bitnami/charts/tree/master/bitnami/common
+    icon: https://bitnami.com/downloads/logos/bitnami-mark.png
+    keywords:
+    - common
+    - helper
+    - template
+    - function
+    - bitnami
+    maintainers:
+    - email: containers@bitnami.com
+      name: Bitnami
+    name: common
+    sources:
+    - https://github.com/bitnami/charts
+    - http://www.bitnami.com/
+    type: library
+    urls:
+    - charts/common-1.10.1.tgz
+    version: 1.10.1
+  minio:
+  - annotations:
+      category: Infrastructure
+    apiVersion: v2
+    appVersion: 2021.9.3
+    created: "2022-01-31T12:14:06.426501-05:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
       tags:
       - bitnami-common
       version: 1.x.x
-    description: Helm chart to deploy airbyte-bootloader
-    digest: 688ae81c3b883c5326170663cdc93eca22bc214c2c9fdf3518330531c89b976a
-    name: airbyte-bootloader
-    type: application
+    description: Bitnami Object Storage based on MinIO&reg; is an object storage server,
+      compatible with Amazon S3 cloud storage service, mainly used for storing unstructured
+      data (such as photos, videos, log files, etc.)
+    digest: 8eb8c9056b8c2c64570976ad7f51fa7b71486012c8f7ba965100b369fa58ff4b
+    home: https://github.com/bitnami/charts/tree/master/bitnami/minio
+    icon: https://bitnami.com/assets/stacks/minio/img/minio-stack-220x234.png
+    keywords:
+    - minio
+    - storage
+    - object-storage
+    - s3
+    - cluster
+    maintainers:
+    - email: containers@bitnami.com
+      name: Bitnami
+    name: minio
+    sources:
+    - https://github.com/bitnami/bitnami-docker-minio
+    - https://min.io
     urls:
-    - airbyte-bootloader-0.40.8.tgz
-    version: 0.40.8
-  - apiVersion: v2
-    appVersion: 0.40.5
-    created: "2022-09-16T18:43:44.247183087Z"
+    - charts/minio-7.3.2.tgz
+    version: 7.3.2
+  postgresql:
+  - annotations:
+      category: Database
+    apiVersion: v2
+    appVersion: 11.14.0
+    created: "2022-01-31T12:14:06.429256-05:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
-      tags:
-      - bitnami-common
       version: 1.x.x
-    description: Helm chart to deploy airbyte-bootloader
-    digest: def99058f354ac767ecb8ee1a5c7cc87d4b1d618593f3ed7d65f4757d83426b1
-    name: airbyte-bootloader
-    type: application
+    description: Chart for PostgreSQL, an object-relational database management system
+      (ORDBMS) with an emphasis on extensibility and on standards-compliance.
+    digest: bf390d423e45c512228ad22c2e5899acfc420c0bb424a169ff8770ce3cb05495
+    home: https://github.com/bitnami/charts/tree/master/bitnami/postgresql
+    icon: https://bitnami.com/assets/stacks/postgresql/img/postgresql-stack-220x234.png
+    keywords:
+    - postgresql
+    - postgres
+    - database
+    - sql
+    - replication
+    - cluster
+    maintainers:
+    - email: containers@bitnami.com
+      name: Bitnami
+    - email: cedric@desaintmartin.fr
+      name: desaintmartin
+    name: postgresql
+    sources:
+    - https://github.com/bitnami/bitnami-docker-postgresql
+    - https://www.postgresql.org/
     urls:
-    - airbyte-bootloader-0.40.6.tgz
-    version: 0.40.6
-  metrics:
-  - apiVersion: v2
-    appVersion: 0.40.3
-    created: "2022-09-16T18:43:44.250636526Z"
-    dependencies:
-    - name: common
-      repository: https://charts.bitnami.com/bitnami
-      tags:
-      - bitnami-common
-      version: 1.x.x
-    description: Helm chart to deploy airbyte-metrics
-    digest: 6842f3f7e5bcfce045b5a07e3de0dc9f0e805f99278630192ba04ebafac5fb07
-    name: metrics
-    type: application
-    urls:
-    - metrics-0.40.8.tgz
-    version: 0.40.8
-  - apiVersion: v2
-    appVersion: 0.40.3
-    created: "2022-09-16T18:43:44.249492613Z"
-    dependencies:
-    - name: common
-      repository: https://charts.bitnami.com/bitnami
-      tags:
-      - bitnami-common
-      version: 1.x.x
-    description: Helm chart to deploy airbyte-metrics
-    digest: 10adafeba787fcc3a82c9adc3038146b27f58f9d86280a45767dce6937396a95
-    name: metrics
-    type: application
-    urls:
-    - metrics-0.40.6.tgz
-    version: 0.40.6
-  pod-sweeper:
-  - apiVersion: v2
-    appVersion: 0.39.37-alpha
-    created: "2022-09-16T18:43:44.253312856Z"
-    dependencies:
-    - name: common
-      repository: https://charts.bitnami.com/bitnami
-      tags:
-      - bitnami-common
-      version: 1.x.x
-    description: Helm chart to deploy airbyte-pod-sweeper
-    digest: f3c3dedeae50b59c995b685ac6c3216ffeae3d5442a8f5e17b198f6c4b86f59b
-    name: pod-sweeper
-    type: application
-    urls:
-    - pod-sweeper-0.40.8.tgz
-    version: 0.40.8
-  - apiVersion: v2
-    appVersion: 0.39.37-alpha
-    created: "2022-09-16T18:43:44.251973741Z"
-    dependencies:
-    - name: common
-      repository: https://charts.bitnami.com/bitnami
-      tags:
-      - bitnami-common
-      version: 1.x.x
-    description: Helm chart to deploy airbyte-pod-sweeper
-    digest: 5c63e260566aa41e894ed9dd3d60e76674e8240d1bc6f0093b65d6e40179c984
-    name: pod-sweeper
-    type: application
-    urls:
-    - pod-sweeper-0.40.6.tgz
-    version: 0.40.6
-  server:
-  - apiVersion: v2
-    appVersion: 0.40.7
-    created: "2022-09-16T18:43:44.256747295Z"
-    dependencies:
-    - name: common
-      repository: https://charts.bitnami.com/bitnami
-      tags:
-      - bitnami-common
-      version: 1.x.x
-    description: Helm chart to deploy airbyte-server
-    digest: 6024a779db56790fc6592dfe45b17be01db62884b34566a0b859516b458c2fc2
-    name: server
-    type: application
-    urls:
-    - server-0.40.8.tgz
-    version: 0.40.8
-  - apiVersion: v2
-    appVersion: 0.40.5
-    created: "2022-09-16T18:43:44.254750073Z"
-    dependencies:
-    - name: common
-      repository: https://charts.bitnami.com/bitnami
-      tags:
-      - bitnami-common
-      version: 1.x.x
-    description: Helm chart to deploy airbyte-server
-    digest: 38aa563079c740ad51f02486108a0a1724b8d408a480161c901c0f57e7378005
-    name: server
-    type: application
-    urls:
-    - server-0.40.6.tgz
-    version: 0.40.6
-  temporal:
-  - apiVersion: v2
-    appVersion: 0.40.7
-    created: "2022-09-16T18:43:44.259226723Z"
-    dependencies:
-    - name: common
-      repository: https://charts.bitnami.com/bitnami
-      tags:
-      - bitnami-common
-      version: 1.x.x
-    description: Helm chart to deploy airbyte-temporal
-    digest: d8905b5ba5df9e575f19e6bac65937d3c181b3fed272520bac2f9e2cb2cd9d9b
-    name: temporal
-    type: application
-    urls:
-    - temporal-0.40.8.tgz
-    version: 0.40.8
-  - apiVersion: v2
-    appVersion: 0.40.5
-    created: "2022-09-16T18:43:44.257977809Z"
-    dependencies:
-    - name: common
-      repository: https://charts.bitnami.com/bitnami
-      tags:
-      - bitnami-common
-      version: 1.x.x
-    description: Helm chart to deploy airbyte-temporal
-    digest: c05b2212dae3fc5e8419ae45534326d1717d7eb5ae638265f293b3434ecc44dc
-    name: temporal
-    type: application
-    urls:
-    - temporal-0.40.6.tgz
-    version: 0.40.6
-  webapp:
-  - apiVersion: v2
-    appVersion: 0.40.7
-    created: "2022-09-16T18:43:44.263726974Z"
-    dependencies:
-    - name: common
-      repository: https://charts.bitnami.com/bitnami
-      tags:
-      - bitnami-common
-      version: 1.x.x
-    description: Helm chart to deploy airbyte-webapp
-    digest: 614c91aa07b3fcd418f4ba6363c4b0ace0cf2b9a5e2e23d3d78aac1dd5fdb835
-    name: webapp
-    type: application
-    urls:
-    - webapp-0.40.8.tgz
-    version: 0.40.8
-  - apiVersion: v2
-    appVersion: 0.40.5
-    created: "2022-09-16T18:43:44.262408359Z"
-    dependencies:
-    - name: common
-      repository: https://charts.bitnami.com/bitnami
-      tags:
-      - bitnami-common
-      version: 1.x.x
-    description: Helm chart to deploy airbyte-webapp
-    digest: 25d7654b92cb54c0fa5c0f526c4144057b2b66c4955d80d2aee02a70b5cbad4e
-    name: webapp
-    type: application
-    urls:
-    - webapp-0.40.6.tgz
-    version: 0.40.6
-  worker:
-  - apiVersion: v2
-    appVersion: 0.40.7
-    created: "2022-09-16T18:43:44.266707907Z"
-    dependencies:
-    - name: common
-      repository: https://charts.bitnami.com/bitnami
-      tags:
-      - bitnami-common
-      version: 1.x.x
-    description: Helm chart to deploy airbyte-worker
-    digest: 60517711db65e8f0ad9cb8216a322869177900d982f99cc0f70cf70d53216e8f
-    name: worker
-    type: application
-    urls:
-    - worker-0.40.8.tgz
-    version: 0.40.8
-  - apiVersion: v2
-    appVersion: 0.40.5
-    created: "2022-09-16T18:43:44.265222291Z"
-    dependencies:
-    - name: common
-      repository: https://charts.bitnami.com/bitnami
-      tags:
-      - bitnami-common
-      version: 1.x.x
-    description: Helm chart to deploy airbyte-worker
-    digest: c6cdbd34edb494a29b1c5e15d1e35ca89690168425ddc87829cb6d8385d7aa4b
-    name: worker
-    type: application
-    urls:
-    - worker-0.40.6.tgz
-    version: 0.40.6
-generated: "2022-09-16T18:43:44.211628987Z"
+    - charts/postgresql-10.13.9.tgz
+    version: 10.13.9
+generated: "2022-01-31T12:14:06.403751-05:00"
